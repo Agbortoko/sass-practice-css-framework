@@ -1,0 +1,74 @@
+
+@each $key, $value in $colors {
+
+    .text-#{$key}{
+        color: $value;
+    }
+
+    .text-hover-#{$key}{
+        &:hover{
+            color: $value;
+        } 
+    }
+
+    .bg-#{$key}{
+        background-color: $value;
+    }
+ 
+
+    @if($value != black and $value != white){
+
+            // light variations
+            @for $i from 1 through 9 {
+
+                .text-#{$key}-light-#{$i}{
+                    color: mix(white, $value, $i * 10%);
+                }
+
+                .text-hover-#{$key}-light-#{$i}{
+                    &:hover{
+                        color: mix(white, $value, $i * 10%);
+                    }
+                }
+
+                .bg-#{$key}-light-#{$i}{
+                    background-color: mix(white, $value, $i * 10%);
+                }
+
+            }
+
+            // dark variations
+            @for $i from 1 through 9 {
+
+                .text-#{$key}-dark-#{$i}{
+                    color: mix(black, $value, $i * 10%);
+                }
+
+
+                .text-hover-#{$key}-dark-#{$i}{
+                    &:hover{
+                        color: mix(black, $value, $i * 10%);
+                    }
+                }
+
+                .bg-#{$key}-dark-#{$i}{
+                    background-color: mix(black, $value, $i * 10%);
+                }
+
+            }
+
+    } 
+
+}
+// May be 
+
+// @if(10 > 5){
+//     .test-if{
+//         color: green;
+//     }
+// } 
+// @else{
+//     .test-if{
+//         color:red;
+//     }
+// }

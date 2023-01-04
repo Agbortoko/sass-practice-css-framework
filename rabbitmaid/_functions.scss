@@ -1,0 +1,25 @@
+@use "sass:math";
+
+@function light-comp($color){
+
+    $complement: complement($color);
+    $light-complement: lighten($complement, 30%);
+
+    @return $light-complement;
+}
+
+
+// Get the section and grid columns and calculate the grid pecentage
+
+/*
+    Formula:
+        .col-x {
+            width: (100/12) * x;
+        }
+*/
+@function grid-percentage($section, $grid-columns){
+
+    $grid-percentage : math.div($section * 100%, $grid-columns);
+
+    @return $grid-percentage;
+}
